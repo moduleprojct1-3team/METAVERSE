@@ -63,14 +63,14 @@ def main(): # 정적언어 처럼 시작함수를 지정할 수 있다.
     for data in jsonSearchResult['items']:
         GetDateChange(data, jsonDataResult)
 
-    with open('%s_naver_%s.json' % (sText, sNode), 'w', encoding='utf-8') as filedata:
+    with open('%s_카페글_%s.json' % (sText, sNode), 'w', encoding='utf-8') as filedata:
         rJson = json.dumps(jsonDataResult, 
                             indent=4,
                             sort_keys=True,
                             ensure_ascii=False )
         filedata.write(rJson)
 
-    print('%s_naver_%s.json 저장완료' % (sText, sNode))
+    print('%s_카페글_%s.json 저장완료' % (sText, sNode))
 
 if __name__ == '__main__':
     main()
