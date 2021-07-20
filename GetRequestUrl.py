@@ -4,6 +4,7 @@
 
 import urllib.request
 import datetime
+import json
 
 # <Summary> - URL 요청 메서드
 # <param> - url : URL주소, clientId : 클라이언트 아이디, clientSecret : 클라이언트 시크릿
