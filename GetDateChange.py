@@ -1,3 +1,6 @@
+# <Summary> 데이터 정제
+# <Remark> 날짜 형식 바꾸기
+
 from GetNaverSearchResult import GetNaverSearchResult
 import json
 
