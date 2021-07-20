@@ -10,8 +10,10 @@ import json
 # <param> - url : URL주소, clientId : 클라이언트 아이디, clientSecret : 클라이언트 시크릿
 # <return> - 리턴값 내용
 
-def GetRequestUrl(url, client_Id, client_Secret): # 데이터 요청하여 가져오기 - 크럴러 작업
+def GetRequestUrl(url): # 데이터 요청하여 가져오기 - 크럴러 작업
 
+    client_Id = "ymjALbZxfqozwf2EwJtL"
+    client_Secret = "WoEF_W2Sjz"
 
     req = urllib.request.Request(url)
     req.add_header("X-Naver-Client-Id", client_Id)
@@ -23,8 +25,10 @@ def GetRequestUrl(url, client_Id, client_Secret): # 데이터 요청하여 가�
             print("[%s] Url 요청 성공 : " % datetime.datetime.now())    
             return response.read().decode('utf-8')
     except Exception as ex:
+        rescode = response.getcode()
         print(ex)
         print("[%s] 오류 : %s " % datetime.datetime.now(), url)
+        print("Error Code" + rescode)
         return None
     
     
@@ -64,21 +68,22 @@ def main():
     jsonDataResult = []
     sNode = 'news' #news / blog 항목을 선택 (move)
     sText = '메타버스'
-    dCount = 100
-    jsonSearchResult = GetNaverSearchResult(sNode, sText, dCount)
+    pStart = 1
+    display = 100
+    jsonSearchResult = GetNaverSearchResult(sNode, sText, pStart, display)
 
     
     for data in jsonSearchResult['items']:
         GetDateChange(data, jsonDataResult)
 
-    with open('%s_naver_%s.json' % (sText, sNode), 'w', encoding='utf-8') as filedata:
+    with open('%s_모듈네이버테스트_%s.json' % (sText, sNode), 'w', encoding='utf-8') as filedata:
         rJson = json.dumps(jsonDataResult, 
                             indent=4,
                             sort_keys=True,
                             ensure_ascii=False )
         filedata.write(rJson)
 
-    print('%s_naver_%s.json 저장완료' % (sText, sNode))
+    print('%s_모듈네이버테스트_%s.json 저장완료' % (sText, sNode))
 
 if __name__ == '__main__':
     main()
