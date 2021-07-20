@@ -38,7 +38,7 @@ def GetNaverSearchResult(searchNode, searchText, pageStart, display):
                                                         display) #검색 결과 레코드 수
     url = baseurl + nodedata + parameters # 모든 것 합쳐서 URL 경로명 완성
     
-    reqDataResult = get_request_url(url)
+    reqDataResult = GetRequestUrl(url)
     if(reqDataResult == None): 
         print("Data가 없습니다.")
         return None
