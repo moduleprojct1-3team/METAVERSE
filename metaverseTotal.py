@@ -80,20 +80,22 @@ def GetCafeDateChange(data, jsonResult): # 데이터를 정제 하는 부분
     return 
 
 def main(): # 정적언어 처럼 시작함수를 지정할 수 있다.
-    jsonDataResult = []
+    jsonDataResult1 = []
+    jsonDataResult2 = []
+    jsonDataResult3 = []
     sNodeNews = 'news' #news / blog 항목을 선택 (move)
     sNodeBlog = 'Blog'
     sNodeCafe = 'cafearticle'
     sText = '메타버스'
     dCount = 100
     
-    jsonSearchResult = GetNaverSearchResult(sNodeNews, sText, 1, dCount) # 결과 확인 하는 함수 호출
+    jsonSearchResult1 = GetNaverSearchResult(sNodeNews, sText, 1, dCount) # 결과 확인 하는 함수 호출
     
-    for data in jsonSearchResult['items']:
-        GetNewsDateChange(data, jsonDataResult)
+    for data in jsonSearchResult1['items']:
+        GetNewsDateChange(data, jsonDataResult1)
 
     with open('%s_naver_%s.json' % (sText, sNodeNews), 'w', encoding='utf-8') as filedata:
-        rJson = json.dumps(jsonDataResult, 
+        rJson = json.dumps(jsonDataResult1, 
                             indent=4,
                             sort_keys=True,
                             ensure_ascii=False )
@@ -102,13 +104,13 @@ def main(): # 정적언어 처럼 시작함수를 지정할 수 있다.
     print('%s_naver_%s.json 저장완료' % (sText, sNodeNews))
 
 
-    jsonSearchResult = GetNaverSearchResult(sNodeBlog, sText, 1, dCount) # 결과 확인 하는 함수 호출
+    jsonSearchResult2 = GetNaverSearchResult(sNodeBlog, sText, 1, dCount) # 결과 확인 하는 함수 호출
     
-    for data in jsonSearchResult['items']:
-        GetBlogDateChange(data, jsonDataResult)
+    for data in jsonSearchResult2['items']:
+        GetBlogDateChange(data, jsonDataResult2)
 
     with open('%s_naver_%s.json' % (sText, sNodeBlog), 'w', encoding='utf-8') as filedata:
-        rJson = json.dumps(jsonDataResult, 
+        rJson = json.dumps(jsonDataResult2, 
                             indent=4,
                             sort_keys=True,
                             ensure_ascii=False )
@@ -117,13 +119,13 @@ def main(): # 정적언어 처럼 시작함수를 지정할 수 있다.
     print('%s_naver_%s.json 저장완료' % (sText, sNodeBlog))
 
 
-    jsonSearchResult = GetNaverSearchResult(sNodeCafe, sText, 1, dCount) # 결과 확인 하는 함수 호출
+    jsonSearchResult3 = GetNaverSearchResult(sNodeCafe, sText, 1, dCount) # 결과 확인 하는 함수 호출
     
-    for data in jsonSearchResult['items']:
-        GetCafeDateChange(data, jsonDataResult)
+    for data in jsonSearchResult3['items']:
+        GetCafeDateChange(data, jsonDataResult3)
 
     with open('%s_naver_%s.json' % (sText, sNodeCafe), 'w', encoding='utf-8') as filedata:
-        rJson = json.dumps(jsonDataResult, 
+        rJson = json.dumps(jsonDataResult3, 
                             indent=4,
                             sort_keys=True,
                             ensure_ascii=False )
