@@ -1,5 +1,5 @@
 # <Summary> 
-# - URL 요청 클래스ㅇ
+# - URL 요청 클래스
 # <remarks> - Client ID, Secret 변경가능
 
 import urllib.request
