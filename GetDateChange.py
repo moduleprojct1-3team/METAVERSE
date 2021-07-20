@@ -14,3 +14,4 @@ def GetDateChange(data, jsonResult): # 데이터를 정제 하는 부분
                         'link': naverLink,
                         'originallink': resultOrgLink,
                         'pubDate': changeDateResult})
+    return 
