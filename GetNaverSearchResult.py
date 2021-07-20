@@ -1,6 +1,7 @@
 # <Summary> - URL 완성 및 초기데이터 로드 클래스
 # <Remarks> - 없음
 
+from GetRequestUrl import GetRequestUrl
 import json
 import urllib.request
 # <Summary> - URL 완성 및 초기데이터 로드 메서드
@@ -15,7 +16,7 @@ def GetNaverSearchResult(searchNode, searchText, pageStart, display):
 
     url = baseurl + nodedata + parameters 
     
-    reqDataResult = get_request_url(url)
+    reqDataResult = GetRequestUrl(url)
     
     if(reqDataResult == None): 
         print("Data가 없습니다.")
