@@ -80,10 +80,12 @@ def GetCafeDateChange(data, jsonResult): # 데이터를 정제 하는 부분
     return 
 
 def main(): # 정적언어 처럼 시작함수를 지정할 수 있다.
+    #jsonDataResult1 = [1, 2, 3] 이렇게 해도 되지 않을까
     jsonDataResult1 = []
     jsonDataResult2 = []
     jsonDataResult3 = []
-    sNodeNews = 'news' #news / blog 항목을 선택 (move)
+    #sNode = ['news', 'Blog', 'cafearticle'] #news / blog 항목을 선택 (move) 이렇게 해도 되지 않을까
+    sNodeNews = 'news'
     sNodeBlog = 'Blog'
     sNodeCafe = 'cafearticle'
     sText = '메타버스'
