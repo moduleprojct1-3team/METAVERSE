@@ -1,7 +1,7 @@
 import urllib.request
 import datetime
 import json
-
+# 주석테스트
 client_id = "i0rOFq7sJon3SVankcLB"
 client_secret = "iNHdUrvzYV"
 

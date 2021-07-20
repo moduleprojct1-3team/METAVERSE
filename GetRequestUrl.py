@@ -1,7 +1,9 @@
+# 메인 클래스 - 슬기
 import urllib.request
 import datetime
 import json
 
+# NAVER API 클라이언트 연결
 client_id = "i0rOFq7sJon3SVankcLB"
 client_secret = "iNHdUrvzYV"
 
