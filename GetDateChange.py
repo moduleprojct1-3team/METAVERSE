@@ -5,8 +5,8 @@ from GetNaverSearchResult import GetNaverSearchResult
 import json
 
 def GetDateChange(data, jsonResult): # 데이터를 정제 하는 부분
-    resultTitle = data['title']
-    resultDesc = data['description']
+    resultTitle = data['title'].replace("<b>", "*").replace("</b>", "*")
+    resultDesc = data['description'].replace("<b>", "*").replace("</b>", "*")
     resultOrgLink = data['originallink']
     naverLink = data['link']
     changeDate = datetime.datetime.strptime(data['pubDate'], 
@@ -17,4 +17,3 @@ def GetDateChange(data, jsonResult): # 데이터를 정제 하는 부분
                         'link': naverLink,
                         'originallink': resultOrgLink,
                         'pubDate': changeDateResult})
-    return 
