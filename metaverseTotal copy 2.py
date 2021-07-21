@@ -80,42 +80,32 @@ def GetCafeDateChange(data, jsonResult): # 데이터를 정제 하는 부분
     return 
 
 def main(): # 정적언어 처럼 시작함수를 지정할 수 있다.
-    jsonDataResult = [0, 1, 2]
+    jsonDataResult1 = []
+    jsonDataResult2 = []
+    jsonDataResult3 = []
     sNode = ['news', 'blog', 'cafearticle'] #news / blog 항목을 선택 (move)
     sText = '메타버스'
     dCount = 100
-    idx = 0
-    jsonSearchResult = GetNaverSearchResult(sNode[idx], sText, 1, dCount)
 
-    for idx in [0, 1, 2]:
-        idx = idx + 1
-        if idx == 0:
-            jsonSearchResult = GetNaverSearchResult(sNode[idx], sText, 1, dCount)    
- 
+    for node in sNode:
+        jsonSearchResult = GetNaverSearchResult(node, sText, 1, dCount)
+        if node == "news":
             for data in jsonSearchResult['items']:
-                GetNewsDateChange(data, jsonDataResult[idx])
-            
-        elif idx == 1:
-            jsonSearchResult = GetNaverSearchResult(sNode[idx], sText, 1, dCount)    
- 
+                GetNewsDateChange(data, jsonDataResult1)
+        elif node == "blog":
             for data in jsonSearchResult['items']:
-                GetBlogDateChange(data, jsonDataResult[idx])
-
-        elif idx == 2:
-            jsonSearchResult = GetNaverSearchResult(sNode[idx], sText, 1, dCount)    
- 
+                GetBlogDateChange(data, jsonDataResult2)
+        elif node == "cafearticle":
             for data in jsonSearchResult['items']:
-                GetCafeDateChange(data, jsonDataResult[idx])
+                GetCafeDateChange(data, jsonDataResult3)
+        
 
-
-    with open('%s_naver_%s.json' % (sText, sNode[idx]), 'w', encoding='utf-8') as filedata:
-           rJson = json.dumps(jsonDataResult[idx], 
-                            indent=4,
-                            sort_keys=True,
-                            ensure_ascii=False )
-    filedata.write(rJson)
-
-    print('%s_naver_%s.json 저장완료' % (sText, sNode[idx]))
+    jsonTotalData = jsonDataResult1 + jsonDataResult2 + jsonDataResult3
+    
+    with open('통합연습2.json', 'w', encoding= 'utf-8') as filedata:
+        rjson = json.dumps(jsonTotalData, indent=4, sort_keys=True, ensure_ascii=False)
+        filedata.write(rjson)
+    
 
 
 if __name__ == '__main__':
